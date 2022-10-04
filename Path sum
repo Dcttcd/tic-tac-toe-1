@@ -1,0 +1,22 @@
+class Solution {
+public:
+        void pathsum(TreeNode* root,int ans,int &pp,int t,int r)
+        {
+           if (root==NULL) {return;}
+                {ans+=root->val;r++;}
+                if (root->left==NULL&&root->right==NULL) {if (ans==t)pp++; r=0;ans=0; }
+            
+              
+                pathsum(root->left,ans,pp,t,r);
+                
+                pathsum(root->right,ans,pp,t,r);
+        }
+    bool hasPathSum(TreeNode* root, int t) {
+            int ans=0,sta=0,qq=0,r=0;
+            if (root==NULL) return false;
+              qq=root->val;
+            pathsum(root,ans,sta,t,r);
+          if (sta>0)  return true;
+            return false;
+    }
+};
